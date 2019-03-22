@@ -13,14 +13,15 @@ module Jekyll
       def merge_style(doc, type)
         head = doc.css('head')
         if head.length > 0
-          wraps = doc.css("head style[#{type}]")
-          if wraps.length == 1
-            contents = doc.css("body style[#{type}]").map do |style|
-              style.remove
-              style.content
-            end
-            wraps[0].content = contents.join("");
+          contents = doc.css("style[#{type}]").map do |style|
+            style.remove
+            style.content
           end
+
+          style = Nokogiri::XML::Node.new "style", doc
+          style[type] = ""
+          style.content = contents.join("");
+          head[0].add_child(style);
         end
       end
     end
