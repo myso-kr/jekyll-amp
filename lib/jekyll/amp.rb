@@ -22,8 +22,9 @@ module Jekyll
       Jekyll::Amp::Audio.render(doc, site)
       Jekyll::Amp::Video.render(doc, site)
       Jekyll::Amp::Image.render(doc, site)
-      Jekyll::Amp::Style.render(doc, site)
+      # Jekyll::Amp::Style.render(doc, site)
       Jekyll::Amp.imports(doc)
+
       html = doc.serialize
       html.gsub!(/\=\"\"/, "")
       html.gsub!(/<noscript><\/noscript>/, "")
