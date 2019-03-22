@@ -10,16 +10,18 @@ module Jekyll
         doc.css('img:not([width])').each do |image|
           if image['src'].start_with?('http://', 'https://')
             src = image['src']
-          else
-            src = File.join(Dir.pwd, site.config.destination, image['src'])
-          end
-          begin
-            size = FastImage.size(src)
-            image['width']  = size[0]
-            image['height'] = size[1]
-          rescue Exception => e
             image['width']  = 4
             image['height'] = 3
+          else
+            src = File.join(Dir.pwd, site.config.destination, image['src'])
+            begin
+              size = FastImage.size(src)
+              image['width']  = size[0]
+              image['height'] = size[1]
+            rescue Exception => e
+              image['width']  = 4
+              image['height'] = 3
+            end
           end
         end
         doc.css('img').each do |image|
