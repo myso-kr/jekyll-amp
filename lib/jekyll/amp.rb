@@ -26,6 +26,7 @@ module Jekyll
       Jekyll::Amp.imports(doc)
       html = doc.serialize
       html.gsub!(/\=\"\"/, "")
+      html.gsub!(/<noscript><\/noscript>/, "")
     end
   end
 end
