@@ -27,7 +27,7 @@ module Jekyll
 
       html = doc.serialize
       html.gsub!(/\=\"\"/, "")
-      html.gsub!(/<noscript><\/noscript>/, "")
+      # html.gsub!(/<noscript><\/noscript>/, "")
     end
   end
 end
