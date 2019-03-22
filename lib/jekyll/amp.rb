@@ -24,7 +24,8 @@ module Jekyll
       Jekyll::Amp::Image.render(doc, site)
       Jekyll::Amp::Style.render(doc, site)
       Jekyll::Amp.imports(doc)
-      doc.serialize
+      html = doc.serialize
+      html.gsub!(/\=\"\"/, "")
     end
   end
 end
