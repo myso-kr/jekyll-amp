@@ -14,7 +14,7 @@ module Jekyll
             src = File.join(Dir.pwd, site.config.destination, image['src'])
           end
           begin
-            size = FastImage.size(src, :raise_on_failure=>true, :timeout=>2.0)
+            size = FastImage.size(src)
             image['width']  = size[0]
             image['height'] = size[1]
           rescue Exception => e
