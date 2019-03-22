@@ -19,7 +19,7 @@ module Jekyll
           end
 
           style = Nokogiri::XML::Node.new "style", doc
-          style[type] = ""
+          style[type] = type
           style.content = contents.join("");
           head[0].add_child(style);
         end
